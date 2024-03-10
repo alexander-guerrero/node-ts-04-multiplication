@@ -1,3 +1,4 @@
+import fs from 'fs';
 
 // Tarea 
 // tabla de multiplicar del 1 al 10 
@@ -19,16 +20,22 @@ const multiplicationTable = ( num: number ): string => {
     return res;
 };
 
-const writeToFile = ( location: string, content: string ): void => {
-    const fs = require('fs');
+const writeToFile = ( path: string, fileName: string, content: string ): void => {
 
     try {
-        fs.writeFileSync(location, content);
+        fs.mkdirSync(path, { recursive: true });
+        const outputPath: string = `${ path }/${ fileName }`;
+        fs.writeFileSync(outputPath, content);
+        console.log('File created!');
     } catch (err) {
         console.log(err);
     }
 };
 
-const tableX = multiplicationTable( 5 );
+const base: number = 6;
+const tableX = multiplicationTable( base );
 console.log(tableX);
-writeToFile( 'outputs/tabla-5.txt', tableX );
+
+const outputPathTableX: string = 'outputs';
+const fileNameTableX: string = `tabla-${ base }.txt`;
+writeToFile( outputPathTableX, fileNameTableX, tableX );
