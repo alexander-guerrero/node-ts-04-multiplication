@@ -1,5 +1,8 @@
+import { yarg } from "./config/plugins/argv.plugin";
 
-console.log(process.argv);
+// "argv" por defecto 
+console.log('"argv" por defecto: ', process.argv);
 
-const [ tsNode, app, ...args ] = process.argv;
-console.log(args);
+// "argv" de yargs 
+console.log('"argv" de yargs: ', yarg);
+console.log('El valor de "b" es: ', yarg.b);
