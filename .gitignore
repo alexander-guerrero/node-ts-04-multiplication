@@ -4,3 +4,6 @@ node_modules/
 
 # Ignorar ficheros de salida 
 outputs/
+
+# Ignorar archivos producidos por el build 
+dist/
