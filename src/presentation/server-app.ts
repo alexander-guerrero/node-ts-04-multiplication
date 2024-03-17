@@ -5,6 +5,8 @@ interface RunOptions {
     base: number;
     limit: number;
     showTable: boolean;
+    name: string;
+    destination: string;
 }
 
 export class ServerApp {
@@ -14,7 +16,7 @@ export class ServerApp {
         console.log('Server running...');
         console.log({ options });
 
-        const { base, limit, showTable } = options;
+        const { base, limit, showTable, name, destination } = options;
         const objCreateTable = new CreateTable();
         const table = objCreateTable.execute({ base, limit });
 
@@ -23,7 +25,8 @@ export class ServerApp {
         const objSaveFile = new SaveFile();
         const wasCreated = objSaveFile.execute({ 
             fileContent: table,
-            fileName: `table-${ base }`
+            filePath: destination,
+            fileName: name
         });
 
         ( wasCreated ) 
