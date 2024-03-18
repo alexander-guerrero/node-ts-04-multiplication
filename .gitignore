@@ -7,3 +7,6 @@ outputs/
 
 # Ignorar archivos producidos por el build 
 dist/
+
+# Ignorar archivos producidos por el testing 
+coverage/
